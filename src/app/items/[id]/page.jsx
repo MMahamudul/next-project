@@ -4,12 +4,9 @@ import Image from 'next/image'
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:5000'
 
 export default async function ItemDetailsPage({ params }) {
-  // unwrap params 
   const { id } = await params
 
-  const res = await fetch(`${API_BASE}/items/${id}`, {
-    cache: 'no-store',
-  })
+  const res = await fetch(`${API_BASE}/items/${id}`, { cache: 'no-store' })
 
   if (!res.ok) {
     return (
@@ -24,17 +21,6 @@ export default async function ItemDetailsPage({ params }) {
 
   const item = await res.json()
 
-  if (!item || !item._id) {
-    return (
-      <main className="max-w-5xl mx-auto px-6 py-16">
-        <Link href="/items" className="text-gray-600 hover:text-black">
-          ← Back to all products
-        </Link>
-        <p className="mt-4">Product not found.</p>
-      </main>
-    )
-  }
-
   return (
     <main className="max-w-5xl mx-auto px-6 py-16">
       <Link href="/items" className="text-gray-600 hover:text-black">
@@ -43,7 +29,7 @@ export default async function ItemDetailsPage({ params }) {
 
       <div className="mt-6 grid gap-8 md:grid-cols-2">
         {item.image && (
-          <div className="relative h-[400px] w-full">
+          <div className="relative h-100 w-full">
             <Image
               src={item.image}
               alt={item.name || 'Product image'}

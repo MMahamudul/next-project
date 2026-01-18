@@ -1,4 +1,4 @@
-'use client'
+/* 'use client'
 
 import { useState } from 'react'
 
@@ -30,5 +30,16 @@ export default function AddItem() {
       <button>Add Item</button>
       {msg && <p>{msg}</p>}
     </form>
+  )
+}
+ */
+export default function AddItemPage() {
+  return (
+    <main className="max-w-3xl mx-auto px-6 py-16">
+      <h1 className="text-3xl font-bold">Add Item</h1>
+      <p className="mt-2 text-gray-600">
+        Protected page. Build your form here.
+      </p>
+    </main>
   )
 }

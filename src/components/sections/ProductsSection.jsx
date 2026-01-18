@@ -1,4 +1,3 @@
-// components/sections/ProductsSection.js
 import Link from 'next/link'
 import ItemCard from '@/components/ItemCard'
 
@@ -8,13 +7,12 @@ export default async function ProductsSection() {
   const res = await fetch(`${API_BASE}/items`, { cache: 'no-store' })
 
   if (!res.ok) {
-    // you can make this fancier later
     return (
       <section className="bg-slate-50 py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-2xl font-semibold">Featured Products</h2>
           <p className="mt-2 text-sm text-red-600">
-            Failed to load products from the API.
+            Failed to load products.
           </p>
         </div>
       </section>
@@ -31,7 +29,7 @@ export default async function ProductsSection() {
           <div>
             <h2 className="text-2xl font-semibold">Featured Products</h2>
             <p className="mt-1 text-sm text-gray-600">
-              Pulled live from your Express + MongoDB backend.
+              Live from Express + MongoDB API.
             </p>
           </div>
 

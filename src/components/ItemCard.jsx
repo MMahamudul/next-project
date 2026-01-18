@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export default function ItemCard({ item }) {
-  if (!item) return null // safety guard
+  if (!item) return null
 
   return (
     <div className="rounded-xl overflow-hidden bg-white shadow-sm border border-slate-200 flex flex-col">
@@ -31,14 +31,12 @@ export default function ItemCard({ item }) {
           <p className="mt-1 font-semibold">€ {item.price}</p>
         )}
 
-        <div className="mt-2">
-          <Link
-            href={`/items/${item._id}`}
-            className="inline-flex justify-center rounded-full bg-black px-4 py-2 text-sm text-white hover:bg-gray-800"
-          >
-            View Details
-          </Link>
-        </div>
+        <Link
+          href={`/items/${item._id}`}
+          className="mt-2 inline-flex justify-center rounded-full bg-black px-4 py-2 text-sm text-white hover:bg-gray-800"
+        >
+          View Details
+        </Link>
       </div>
     </div>
   )
