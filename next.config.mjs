@@ -1,6 +1,12 @@
+// next.config.mjs
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-};
+  images: {
+    domains: ['picsum.photos'], // allow https://picsum.photos/...
+    // or use remotePatterns if you prefer
+  },
+}
 
-export default nextConfig;
+export default nextConfig
+
+
