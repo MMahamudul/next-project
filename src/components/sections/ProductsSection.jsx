@@ -1,7 +1,11 @@
 import Link from 'next/link'
 import ItemCard from '@/components/ItemCard'
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:3000'
+
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_BASE ??
+  process.env.NEXTAUTH_URL ??
+  ''
 
 export default async function ProductsSection() {
   const res = await fetch(`${API_BASE}/api/items`, { cache: 'no-store' })
@@ -54,4 +58,3 @@ export default async function ProductsSection() {
     </section>
   )
 }
-
