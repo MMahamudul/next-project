@@ -3,15 +3,13 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:5000'
-
 export default function AddItemForm() {
   const router = useRouter()
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
-  const [image, setImage] = useState('') // default demo image
+  const [image, setImage] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -21,12 +19,11 @@ export default function AddItemForm() {
     setError('')
     setSuccess('')
 
-    // Simple validation
     if (!name.trim()) {
       setError('Name is required')
       return
     }
-    if (!price || isNaN(Number(price))) {
+    if (price === '' || isNaN(Number(price))) {
       setError('Price must be a valid number')
       return
     }
@@ -34,7 +31,7 @@ export default function AddItemForm() {
     setLoading(true)
 
     try {
-      const res = await fetch(`${API_BASE}/items`, {
+      const res = await fetch('/api/items', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -46,21 +43,18 @@ export default function AddItemForm() {
       })
 
       if (!res.ok) {
-        throw new Error('Failed to add item')
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data?.error || 'Failed to add item')
       }
 
       setSuccess('Item added successfully!')
-      // Optional: reset form
       setName('')
       setDescription('')
       setPrice('')
-      // keep image or reset as you like
-      // setImage('')
+      setImage('')
 
-      // Redirect to items list after short delay
-      setTimeout(() => {
-        router.push('/items')
-      }, 800)
+      router.push('/items')
+      router.refresh() // helpful if items page is server-rendered
     } catch (err) {
       setError(err.message || 'Something went wrong')
     } finally {
@@ -125,10 +119,10 @@ export default function AddItemForm() {
           type="url"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          placeholder="Add Image Here"
+          placeholder="Add Image Here (optional)"
         />
         <p className="mt-1 text-xs text-gray-500">
-          
+          Example: https://picsum.photos/id/180/400/300
         </p>
       </div>
 
@@ -145,4 +139,3 @@ export default function AddItemForm() {
     </form>
   )
 }
-

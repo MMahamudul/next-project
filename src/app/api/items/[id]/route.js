@@ -5,7 +5,7 @@ import { connectDB } from '@/lib/db'
 
 export async function GET(_req, { params }) {
   try {
-    const { id } = params
+    const { id } = await params
     const db = await connectDB()
     const item = await db
       .collection('items')
@@ -16,8 +16,12 @@ export async function GET(_req, { params }) {
     }
 
     return NextResponse.json(item)
-  } catch (err) {
-    console.error('GET /api/items/[id] error:', err)
-    return NextResponse.json({ error: 'Failed to fetch item' }, { status: 500 })
+  } catch (error) {
+    console.error('GET /api/items/[id] error:', error)
+    return NextResponse.json(
+      { error: 'Failed to fetch item' },
+      { status: 500 }
+    )
   }
 }
+

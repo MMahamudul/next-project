@@ -18,7 +18,7 @@ export async function connectDB() {
   }
 
   await client.connect()
-  db = client.db() // use DB from connection string
+  db = client.db() 
 
   return db
 }
