@@ -1,16 +1,21 @@
 import Link from 'next/link'
 import ItemCard from '@/components/ItemCard'
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:5000'
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:3000'
 
 export default async function ProductsSection() {
-  const res = await fetch(`${API_BASE}/items`, { cache: 'no-store' })
+  const res = await fetch(`${API_BASE}/api/items`, { cache: 'no-store' })
 
   if (!res.ok) {
+    const text = await res.text().catch(() => '')
+    console.error('Failed to load products:', res.status, text)
+
     return (
       <section className="bg-slate-50 py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center text-blue-800">Featured Products</h2>
+          <h2 className="text-3xl font-bold text-center text-blue-800">
+            Featured Products
+          </h2>
           <p className="mt-2 text-sm text-gray-600 text-center">
             Failed to load products.
           </p>
@@ -25,13 +30,13 @@ export default async function ProductsSection() {
   return (
     <section className="bg-slate-50 py-16">
       <div>
-            <h2 className="text-3xl font-bold text-center text-blue-800">Featured Products</h2>
-            
-          </div>
+        <h2 className="text-3xl font-bold text-center text-blue-800">
+          Featured Products
+        </h2>
+      </div>
+
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          
-
           <Link
             href="/items"
             className="text-sm font-medium text-indigo-600 hover:text-indigo-700"
@@ -49,3 +54,4 @@ export default async function ProductsSection() {
     </section>
   )
 }
+
