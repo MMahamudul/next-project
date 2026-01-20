@@ -11,13 +11,13 @@ const Hero = () => {
             Buy & Sell Amazing Products
           </h1>
           <p className="mt-4 text-lg">
-            Simple marketplace built with Next.js & MongoDB
+            Simple marketplace built with Professionalism & Care
           </p>
           <Link
             href="/items"
             className="inline-block mt-8 bg-white text-blue-600 px-6 py-3 rounded font-semibold"
           >
-            Browse Items
+            Browse Products
           </Link>
         </div>
       </section>

@@ -9,9 +9,9 @@ export default async function ProductsSection() {
   if (!res.ok) {
     return (
       <section className="bg-slate-50 py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold">Featured Products</h2>
-          <p className="mt-2 text-sm text-red-600">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center text-blue-800">Featured Products</h2>
+          <p className="mt-2 text-sm text-gray-600 text-center">
             Failed to load products.
           </p>
         </div>
@@ -24,14 +24,13 @@ export default async function ProductsSection() {
 
   return (
     <section className="bg-slate-50 py-16">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h2 className="text-2xl font-semibold">Featured Products</h2>
-            <p className="mt-1 text-sm text-gray-600">
-              Live from Express + MongoDB API.
-            </p>
+      <div>
+            <h2 className="text-3xl font-bold text-center text-blue-800">Featured Products</h2>
+            
           </div>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+          
 
           <Link
             href="/items"

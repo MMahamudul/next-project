@@ -10,7 +10,7 @@ const CTA = () => {
           href="/add-item"
           className="inline-block mt-6 bg-white text-blue-600 px-6 py-3 rounded font-semibold"
         >
-          Add Your Item
+          Add Your Product
         </Link>
       </section>
         </div>

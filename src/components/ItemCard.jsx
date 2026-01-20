@@ -33,7 +33,7 @@ export default function ItemCard({ item }) {
 
         <Link
           href={`/items/${item._id}`}
-          className="mt-2 inline-flex justify-center rounded-full bg-black px-4 py-2 text-sm text-white hover:bg-gray-800"
+          className="mt-2 inline-flex justify-center rounded-full bg-blue-950 px-4 py-2 text-sm text-white hover:bg-gray-800"
         >
           View Details
         </Link>

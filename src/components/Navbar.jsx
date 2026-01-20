@@ -18,14 +18,14 @@ export default function Navbar() {
   return (
     <nav className="w-full bg-white shadow sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold text-blue-600">
-          NextItems
+        <Link href="/" className="text-2xl font-bold text-blue-900">
+          NextPro
         </Link>
 
         <div className="flex items-center gap-2">
           <Link href="/" className={linkClass('/')}>Home</Link>
-          <Link href="/items" className={linkClass('/items')}>Items</Link>
-          <Link href="/add-item" className={linkClass('/add-item')}>Add Item</Link>
+          <Link href="/items" className={linkClass('/items')}>Products</Link>
+          <Link href="/add-item" className={linkClass('/add-item')}>Add Product</Link>
 
           {status === 'authenticated' ? (
             <>
